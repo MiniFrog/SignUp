@@ -3,9 +3,10 @@ namespace StandardRequest;
 
 interface InterfaceStandardRequest
 {
-    public function getRequest();
-    //返回请求的内容
+    public function getHandler();
+    //返回选择的处理器
     
     public function __get($name);
+    //返回其他的对应字段的值
 }
 

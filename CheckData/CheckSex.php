@@ -3,14 +3,14 @@ namespace CheckData;
 
 use StandardRequest\Request;
 
-class CheckBirthday extends InterfaceCheckData
+class CheckSex extends InterfaceCheckData
 {
 
     public function __construct(Request $Request)
     {
-        if(isset($Request->Birthday))
+        if(isset($Request->Sex))
         {
-            $this->column_value = $Request->Birthday;
+            $this->column_value = $Request->Sex;
         } else {
             $this->column_value = NULL;
         }
@@ -20,9 +20,10 @@ class CheckBirthday extends InterfaceCheckData
     {
         if($this->column_value != NULL)
         {
-            if(preg_match('/^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/', $this->column_value))
+            $Sex = array( 1, 2 );
+            if( in_array($this->column_value, $Sex) )
             {
-                return $this->successor->startCheck() && TRUE;
+                return TRUE && $this->successor->startCheck();
             }
         }
         return FALSE;

@@ -16,7 +16,7 @@ class HandlerSignUp extends InterfaceHandler
 
     public function handleRequest(Request $request)
     {
-        if( $this->handler == $request->getRequest() )
+        if( $this->handler == $request->getHandler() )
         {
             
         } else {

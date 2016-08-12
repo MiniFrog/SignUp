@@ -3,14 +3,14 @@ namespace CheckData;
 
 use StandardRequest\Request;
 
-class CheckPhoneNumber extends InterfaceCheckData
+class CheckQQNumber extends InterfaceCheckData
 {
 
     public function __construct(Request $Request)
     {
-        if(isset($Request->PhoneNumber))
+            if(isset($Request->QQNumber))
         {
-            $this->column_value = trim($Request->PhoneNumber);
+            $this->column_value = $Request->QQNumber;
         } else {
             $this->column_value = NULL;
         }
@@ -18,11 +18,10 @@ class CheckPhoneNumber extends InterfaceCheckData
 
     public function startCheck()
     {
-        if(preg_match('^1[3|4|5|7|8]\d{9}$', $this->column_value))
+        if( preg_match('/^[1-9]\d{4,9}$/', $this->column_value) )
         {
             return $this->successor->startCheck() && TRUE;
         }
         return FALSE;
     }
 }
-

@@ -15,7 +15,7 @@ class CheckName extends InterfaceCheckData
     {
         if(isset($Request->Name))
         {
-            $this->column_value = trim($Request->Name);
+            $this->column_value = $Request->Name;
         } else {
             $this->column_value = NULL;
         }
@@ -32,7 +32,7 @@ class CheckName extends InterfaceCheckData
                 return $this->successor->startCheck() && TRUE;
             }
         }
-        return $this->successor->startCheck() && FALSE;
+        return FALSE;
     }
 }
 

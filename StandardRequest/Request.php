@@ -8,7 +8,19 @@ class Request implements InterfaceStandardRequest
     
     public function __construct()
     {
-        $this->post = $_POST;
+        if(get_magic_quotes_gpc())
+        {//check if the magic method is used.
+            foreach ($_POST as $value)
+            {
+                $this->post[] = trim($value);
+            }
+        } else {
+            foreach ($_POST as $value)
+            {
+                $this->post[] = addslashes( trim($value) );
+            }
+        }
+        
     }
 
     public function __get($name)
@@ -16,7 +28,7 @@ class Request implements InterfaceStandardRequest
         return $this->post[$name];
     }
 
-    public function getRequest()
+    public function getHandler()
     {
         return $this->post['Handler'];
     }
