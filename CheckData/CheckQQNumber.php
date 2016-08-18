@@ -20,7 +20,7 @@ class CheckQQNumber extends InterfaceCheckData
     {
         if( preg_match('/^[1-9]\d{4,9}$/', $this->column_value) )
         {
-            return $this->successor->startCheck() && TRUE;
+            return $this->successor->startCheck();
         }
         return FALSE;
     }

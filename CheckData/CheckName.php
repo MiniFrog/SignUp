@@ -29,7 +29,7 @@ class CheckName extends InterfaceCheckData
             $mb_length = mb_strlen($this->column_value);
             if($length % $mb_length == 0 && $mb_length <= MAX_LENGTH && $mb_length >= MIN_LENGTH)
             {
-                return $this->successor->startCheck() && TRUE;
+                return $this->successor->startCheck();
             }
         }
         return FALSE;

@@ -3,14 +3,14 @@ namespace CheckData;
 
 use StandardRequest\Request;
 
-class CheckSex extends InterfaceCheckData
+class CheckDormitory extends InterfaceCheckData
 {
 
     public function __construct(Request $Request)
     {
-        if(isset($Request->Sex))
+        if(isset($Request->Dormitory))
         {
-            $this->column_value = $Request->Sex;
+            $this->column_value = strtolower( $Request->Dormitory );
         } else {
             $this->column_value = NULL;
         }
@@ -18,10 +18,9 @@ class CheckSex extends InterfaceCheckData
 
     public function startCheck()
     {
-        if($this->column_value != NULL)
+        if( $this->column_value != NULL )
         {
-            $Sex = array( 1, 2 );
-            if( in_array($this->column_value, $Sex) )
+            if( preg_match('/^c[8|7]\s+[4-6]\d{2}$/', $this->column_value) )
             {
                 return $this->successor->startCheck();
             }

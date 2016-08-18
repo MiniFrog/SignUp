@@ -1,5 +1,5 @@
 <?php
-namespace Request;
+namespace Handler;
 
 use \StandardRequest\Request as Request;
 
@@ -14,6 +14,6 @@ abstract class InterfaceHandler
         $this->successor = $next_handler;
     }
     
-    abstract public function handleRequest(Request $request);
+    abstract public function handleRequest(Request $Request);
 }
 
