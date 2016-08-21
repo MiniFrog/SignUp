@@ -12,8 +12,10 @@ class StaticPdo extends InterfaceStaticPdo
             $dsn = 'mysql:dbname='. StaticPdo::DB_NAME .';host='. StaticPdo::DB_HOST;
             static::$PDO = new \PDO($dsn, StaticPdo::DB_USER, StaticPdo::DB_PWD);
             static::$PDO->setAttribute( \PDO::ATTR_EMULATE_PREPARES, FALSE);
+            static::$PDO->exec('SET NAMES utf8');
             return static::$PDO;
         } catch (\PDOException $e) {
+            error_log($e->getMessage());
             echo json_encode(6);
             exit();
         }

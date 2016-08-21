@@ -1,47 +1,69 @@
 <?php
 namespace Database;
 
-use \StandardRequest\Request as Request;
-
 class DatabaseInsert
-{    
-    public static function startInsert(Request $Request, \PDO $PDO, Array $column_list, $table_name)
+{
+
+    protected $sql;
+
+    protected $value;
+
+    public function __construct (String $table_name)
     {
-        $sql = "INSERT INTO $table_name (";
-        $sql .= static::makeColumn($column_list);
-        $sql .= ') VALUES (';
-        $sql .= static::makeValue($column_list);
-        $sql .= ')';
-        $stmt = $PDO->prepare($sql);
-        for($i=0, $j = count($column_list) ; $i < $j ; $i++)
-        {
-            $stmt->bindParam($i + 1, $column_list[$i]);
-        }
-        $result = $stmt->execute();
-        return $result;
+        $value = NULL;
+        $this->sql = "INSERT INTO $table_name ";
     }
-    
-    protected static function makeColumn(Array $column_list)
+
+    public function setColumn (Array $column_value)
     {
-        $column_sql = "";
-        foreach($column_list as $value)
-        {
-            $column_sql .= "$value,"; 
+        $this->sql .= '(';
+        foreach ($column_value as $key => $v) {
+            $this->value[] = $v;
+            $this->sql .= "$key,";
         }
-        $column_sql = substr($column_sql, 0, -1);
-        //You can see the manual to learn the details of the substr function;
-        return $column_sql;
+        $this->sql = substr($this->sql, 0, - 1);
+        $this->sql .= ') ';
+        return $this;
     }
-    
-    protected static function makeValue(Array $column_list)
+
+    public function setValue (Array $insert_value = NULL)
     {
-        $value_sql = '';
-        foreach($column_list as $value)
-        {
-            $value_sql .= '?,';
+        try {
+            if ($insert_value == NULL && $this->sql == NULL) {
+                throw new \Exception('Class \Database\DatabaseInsert SQL error.');
+            } else {
+                $this->sql .= 'VALUES (';
+                if($insert_value != NULL){
+                    $this->value = $insert_value;
+                }
+                foreach ($this->value as $v) {
+                    $this->sql .= "?,";
+                }
+                $this->sql = substr($this->sql, 0, -1);
+                $this->sql .= ')';
+                return $this;
+            }
+        } catch(\Exception $e) {
+            error_log("$e->getMessage()");
+            echo json_encode(6);
+            exit();
         }
-        $value_sql = substr($value_sql, 0, -1);
-        return $value_sql;
+    }
+
+    public function startInsert (\PDO $PDO)
+    {
+        $stmt = $PDO->prepare($this->sql);
+        $i=1;
+        foreach ($this->value as $v)
+        {
+            if( is_string($v) ){
+                $stmt->bindParam($i, $v, \PDO::PARAM_STR);
+            } else {
+                $stmt->bindParam($i, $v, \PDO::PARAM_INT);
+            }
+            $i++;
+        }
+        return $stmt->execute();
     }
 }
 

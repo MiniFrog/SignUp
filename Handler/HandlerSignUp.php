@@ -36,18 +36,24 @@ class HandlerSignUp extends InterfaceHandler
                                 'StdId' => $Request->StdId
                         ));
                 if ($exist) {
-                    $column_array = array(
-                            'PhoneNumber',
-                            'QQNumber',
-                            'Sex',
-                            'Dormitory',
-                            'ClassNumber',
-                            'Choice',
-                            'Birthday'
-                    );
-                    if (\Database\DatabaseInsert::startInsert($Request, $PDO, 
-                            $column_array, 'member')) {
-                        setcookie(md5($Request->Name), md5($Request->StdId), time()+60*60*24*7);
+                    $DBInsert = new \Database\DatabaseInsert('member');
+                    $result = $DBInsert->setColumn(
+                            array(
+                                    'StdId' => $Request->StdId,
+                                    'Sex' => $Request->Sex,
+                                    'Name' => $Request->Name,
+                                    'Birthday' => $Request->Birthday,
+                                    'PhoneNumber' => $Request->PhoneNumber,
+                                    'Dormitory' => $Request->Dormitory,
+                                    'ClassNumber' => $Request->ClassNumber,
+                                    'FirstChoice' => $Request->FirstChoice,
+                                    'SecondChoice' => $Request->SecondChoice
+                            ))
+                        ->setValue()
+                        ->startInsert($PDO);
+                    if ($result) {
+                        setcookie(md5($Request->Name), md5($Request->StdId), 
+                                time() + 60 * 60 * 24 * 7);
                         return json_encode(0);
                     }
                 }
