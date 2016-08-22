@@ -39,6 +39,7 @@ class HandlerInquiry extends InterfaceHandler
                                     'Room' => $Request->Room
                             ));
                     if (! $if_exist) {
+                        //can't find the sign up info
                         return json_encode(2);
                         exit();
                     }
@@ -76,17 +77,22 @@ class HandlerInquiry extends InterfaceHandler
                 if (count($result)) {
                     foreach ($result[0] as $v) {
                         if (is_string($v)) {
-                            echo $v;
                             $v = htmlspecialchars($v);
-                            echo $v;
                         }
                     }
                     echo json_encode($result);
                     exit();
+                } else {
+                    //server error
+                    error_log('Database select info error.');
+                    echo json_encode(5);
+                    exit();
                 }
+            } else {
+                //input data format error
+                echo json_encode(1);
+                exit();
             }
-            echo json_encode(2);
-            exit();
         } else {
             $this->successor->handleRequest($Request);
         }

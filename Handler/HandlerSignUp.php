@@ -88,13 +88,21 @@ class HandlerSignUp extends InterfaceHandler
                         echo json_encode(0);
                         exit();
                     } else {
+                        //server error
+                        error_log('Database insert info error.');
                         echo json_encode(5);
                         exit();
                     }
+                } else {
+                    //the info has already existed.
+                    echo json_encode(2);
+                    exit();
                 }
+            } else {
+                //input data format error
+                echo json_encode(1);
+                exit();
             }
-            echo json_encode(1);
-            exit();
         } else {
             $this->successor->handleRequest($Request);
         }
