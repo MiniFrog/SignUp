@@ -74,9 +74,11 @@ class HandlerInquiry extends InterfaceHandler
                                 $Request->Room
                         ));
                 if (count($result)) {
-                    foreach ($result as $v) {
+                    foreach ($result[0] as $v) {
                         if (is_string($v)) {
+                            echo $v;
                             $v = htmlspecialchars($v);
+                            echo $v;
                         }
                     }
                     echo json_encode($result);

@@ -25,9 +25,7 @@ class CheckName extends InterfaceCheckData
     {   
         if($this->column_value != NULL)
         {//when the Name column is set.
-            $length = strlen($this->column_value);
-            $mb_length = mb_strlen($this->column_value);
-            if($length % $mb_length == 0 && $mb_length <= self::MAX_LENGTH && $mb_length >= self::MIN_LENGTH)
+            if(preg_match('/^[\x{4e00}-\x{9fa5}]{'.self::MIN_LENGTH.','.self::MAX_LENGTH.'}/u', $this->column_value))
             {
                 return $this->successor->startCheck();
             }
