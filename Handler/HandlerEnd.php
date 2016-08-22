@@ -20,7 +20,7 @@ class HandlerEnd extends InterfaceHandler
         } catch (RequestException $Exception) {
             error_log($Exception->getMessage(), 0);
         }
-        return json_encode(5);
+        return json_encode(6);
     }
 }
 

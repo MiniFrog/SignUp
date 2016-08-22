@@ -20,8 +20,7 @@ class CheckClassNumber extends InterfaceCheckData
     {
         if( $this->column_value != NULL )
         {
-            $class_number = array( 1, 2, 3, 4, 5 );
-            if( in_array($this->column_value, $class_number) )
+            if( mb_strlen($this->column_value) < 5 && mb_strlen($this->column_value) > 1 )
             {
                 return $this->successor->startCheck();
             }

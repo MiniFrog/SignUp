@@ -20,7 +20,7 @@ class CheckSex extends InterfaceCheckData
     {
         if($this->column_value != NULL)
         {
-            $Sex = array( 1, 2 );
+            $Sex = array( 0, 1 );
             if( in_array($this->column_value, $Sex) )
             {
                 return $this->successor->startCheck();

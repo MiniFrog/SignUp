@@ -7,7 +7,7 @@ abstract class InterfaceStaticPdo
     
     const DB_NAME = 'SignUp';
     
-    const DB_USER = 'YOU';
+    const DB_USER = 'SignUp';
     
     const DB_PWD = 'al3682733';
     

@@ -6,62 +6,41 @@ class DatabaseInsert
 
     protected $sql;
 
-    protected $value;
-
     public function __construct (String $table_name)
     {
         $value = NULL;
         $this->sql = "INSERT INTO $table_name ";
     }
 
-    public function setColumn (Array $column_value)
+    public function setColumn (Array $insert_column)
     {
         $this->sql .= '(';
-        foreach ($column_value as $key => $v) {
-            $this->value[] = $v;
-            $this->sql .= "$key,";
+        foreach ($insert_column as $v) {
+            $this->sql .= "$v,";
         }
         $this->sql = substr($this->sql, 0, - 1);
         $this->sql .= ') ';
         return $this;
     }
 
-    public function setValue (Array $insert_value = NULL)
+    public function setValue ($insert_number)
     {
-        try {
-            if ($insert_value == NULL && $this->sql == NULL) {
-                throw new \Exception('Class \Database\DatabaseInsert SQL error.');
-            } else {
-                $this->sql .= 'VALUES (';
-                if($insert_value != NULL){
-                    $this->value = $insert_value;
-                }
-                foreach ($this->value as $v) {
-                    $this->sql .= "?,";
-                }
-                $this->sql = substr($this->sql, 0, -1);
-                $this->sql .= ')';
-                return $this;
-            }
-        } catch(\Exception $e) {
-            error_log("$e->getMessage()");
-            echo json_encode(6);
-            exit();
+        $this->sql .= 'VALUES (';
+        for ($i = 0; $i < $insert_number; $i ++) {
+            $this->sql .= '?,';
         }
+        $this->sql = substr($this->sql, 0, - 1);
+        $this->sql .= ') ';
+        return $this;
     }
 
-    public function startInsert (\PDO $PDO)
+    public function startInsert (\PDO $PDO, Array $value)
     {
         $stmt = $PDO->prepare($this->sql);
-        $i=1;
-        foreach ($this->value as $v)
-        {
-            if( is_string($v) ){
-                $stmt->bindParam($i, $v, \PDO::PARAM_STR);
-            } else {
-                $stmt->bindParam($i, $v, \PDO::PARAM_INT);
-            }
-            $i++;
+        $i = 1;
+        foreach ($value as $Key => $v) {
+            $stmt->bindParam($i, $value[$Key]);
+            $i ++;
         }
         return $stmt->execute();
     }

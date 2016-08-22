@@ -20,7 +20,7 @@ class CheckBirthday extends InterfaceCheckData
     {
         if($this->column_value != NULL)
         {
-            if(preg_match('/^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/', $this->column_value))
+            if(preg_match('/^(19|20)\d{2} (1[0-2]|0?[1-9]) (0?[1-9]|[1-2][0-9]|3[0-1])$/', $this->column_value))
             {
                 return $this->successor->startCheck();
             }

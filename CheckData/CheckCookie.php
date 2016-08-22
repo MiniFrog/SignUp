@@ -8,7 +8,7 @@ class CheckCookie extends InterfaceCheckData
     public function __construct (Request $Request)
     {
         $this->column_value[] = md5($Request->Name);
-        $this->column_value[] = md5($Request->StdId);
+        $this->column_value[] = md5($Request->Dormitory.$Request->Room);
     }
 
     public function startCheck ()

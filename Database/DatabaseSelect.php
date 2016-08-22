@@ -6,8 +6,6 @@ class DatabaseSelect
 
     protected $sql;
 
-    protected $value;
-
     public function __construct ($table_name, Array $column_name)
     {
         $this->sql = 'SELECT ';
@@ -18,17 +16,13 @@ class DatabaseSelect
         $this->sql .= " FROM $table_name ";
     }
 
-    public function startSelect (\PDO $PDO)
+    public function startSelect (\PDO $PDO, Array $value)
     {
         $stmt = $PDO->prepare($this->sql);
         $i = 1;
-        foreach ($this->value as $v){
-            if( is_string($v) ){
-                $stmt->bindParam($i, $v, \PDO::PARAM_STR);
-            } else {
-                $stmt->bindParam($i, $v, \PDO::PARAM_INT);
-            }
-            $i++;
+        foreach ($value as $key => $v) {
+            $stmt->bindParam($i, $value[$key]);
+            $i ++;
         }
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -37,10 +31,10 @@ class DatabaseSelect
     public function setWhere (Array $where)
     {
         $this->sql .= 'WHERE ';
-        foreach ($where as $key => $value) {
-            $this->sql .= "$key=? AND ";
-            $this->value[] = $value;
+        foreach ($where as $v) {
+            $this->sql .= "$v=? AND ";
         }
+        $this->sql = substr($this->sql, 0, - 4);
         return $this;
     }
 }

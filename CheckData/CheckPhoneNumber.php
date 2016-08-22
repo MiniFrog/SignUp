@@ -18,7 +18,7 @@ class CheckPhoneNumber extends InterfaceCheckData
 
     public function startCheck()
     {
-        if(preg_match('^1[3|4|5|7|8]\d{9}$', $this->column_value))
+        if(preg_match('/^1[3|4|5|7|8]\d{9}$/', $this->column_value))
         {
             return $this->successor->startCheck();
         }

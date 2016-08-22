@@ -16,7 +16,7 @@ class CheckShortPhoneNumber extends InterfaceCheckData
 
     public function startCheck ()
     {
-        if ($this->column_value != NULL) {
+        if ($this->column_value !== NULL) {
             if (preg_match('/^\d{6}$/', $this->column_value) ||
                      $this->column_value == '') {
                 return $this->successor->startCheck();

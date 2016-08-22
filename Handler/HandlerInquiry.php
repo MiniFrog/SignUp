@@ -16,7 +16,8 @@ class HandlerInquiry extends InterfaceHandler
         if ($Request->getHandler() == $this->handler) {
             $checkObj = array(
                     new \CheckData\CheckName($Request),
-                    new \CheckData\CheckStdId($Request),
+                    new \CheckData\CheckDormitory($Request),
+                    new \CheckData\CheckRoom($Request),
                     new \CheckData\CheckEnd($Request)
             );
             for ($i = 1; $i < count($checkObj); $i ++) {
@@ -34,34 +35,56 @@ class HandlerInquiry extends InterfaceHandler
                             'member', 
                             array(
                                     'Name' => $Request->Name,
-                                    'StdId' => $Request->StdId
+                                    'Dormitory' => $Request->Dormitory,
+                                    'Room' => $Request->Room
                             ));
                     if (! $if_exist) {
-                        return json_encode(1);
+                        return json_encode(2);
+                        exit();
                     }
                 }
                 $DBSelect = new \Database\DatabaseSelect('member', 
                         array(
                                 'Name',
-                                'StdId',
                                 'Sex',
+                                'Birthday',
                                 'QQNumber',
                                 'PhoneNumber',
+                                'ShortPhoneNumber',
                                 'Dormitory',
+                                'Room',
                                 'ClassNumber',
                                 'FirstChoice',
-                                'SecondChoice'
+                                'SecondChoice',
+                                'AceptSwap',
+                                'Interest',
+                                'SelfConception',
+                                'SectorAwareness',
+                                'Experience'
                         ));
                 $result = $DBSelect->setWhere(
                         array(
-                                'Name' => "$Request->Name",
-                                'StdId' => "$Request->StdId"
-                        ))->startSelect($PDO);
+                                'Name',
+                                'Dormitory',
+                                'Room'
+                        ))->startSelect($PDO, 
+                        array(
+                                $Request->Name,
+                                $Request->Dormitory,
+                                $Request->Room
+                        ));
                 if (count($result)) {
-                    return json_encode($result);
+                    foreach ($result as $v) {
+                        if (is_string($v)) {
+                            $v = htmlspecialchars($v);
+                        }
+                    }
+                    echo json_encode($result);
+                    exit();
                 }
             }
-            return json_encode(1);
+            echo json_encode(2);
+            exit();
         } else {
             $this->successor->handleRequest($Request);
         }

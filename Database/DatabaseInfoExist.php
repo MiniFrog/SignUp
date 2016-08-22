@@ -13,24 +13,21 @@ class DatabaseInfoExist
         $sql .= " LIMIT 1";
         $stmt = $PDO->prepare($sql);
         $i = 1;
-        foreach ($where_value as $value) {
-            if (is_string($value)) {
-                $stmt->bindParam($i, $value, \PDO::PARAM_STR);
-            } else {
-                $stmt->bindParam($i, $value, \PDO::PARAM_INT);
-            }
+        foreach ($where_value as $key=>$value) {
+            $stmt->bindParam($i, $where_value[$key]); 
             $i ++;
         }
         $stmt->execute();
         return $stmt->rowCount();
     }
 
-    protected function makeValue (Array $where_value)
+    protected static function makeValue (Array $where_value)
     {
+        $sql = '';
         foreach ($where_value as $key => $value) {
-            $sql .= "$key=? ";
+            $sql .= "$key=? AND ";
         }
-        $sql = substr($sql, 0, - 1);
+        $sql = substr($sql, 0, - 4);
         return $sql;
     }
 }

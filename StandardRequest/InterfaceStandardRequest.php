@@ -8,5 +8,7 @@ interface InterfaceStandardRequest
     
     public function __get($name);
     //返回其他的对应字段的值
+    
+    public function __isset($name);
 }
 
