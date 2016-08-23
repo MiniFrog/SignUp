@@ -37,9 +37,7 @@ class HandlerSignUp extends InterfaceHandler
                 $PDO = \Database\StaticPdo::DBConnect();
                 $exist = \Database\DatabaseInfoExist::infoExist($PDO, 'member', 
                         array(
-                                'Name' => $Request->Name,
-                                'Dormitory' => $Request->Dormitory,
-                                'Room' => $Request->Room
+                                'QQNumber' => $Request->QQNumber,
                         ));
                 if (! $exist) {
                     $DBInsert = new \Database\DatabaseInsert('member');

@@ -40,7 +40,7 @@ class HandlerInquiry extends InterfaceHandler
                             ));
                     if (! $if_exist) {
                         //can't find the sign up info
-                        return json_encode(2);
+                        echo json_encode(2);
                         exit();
                     }
                 }
