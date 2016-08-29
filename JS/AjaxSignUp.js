@@ -26,7 +26,7 @@ $(document).ready(function (){
 			},
 			success:function(data) {
 				switch(data) {
-					case "0" 
+					case "0":
 						alert(data);
 						break;
 					case "1":

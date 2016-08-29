@@ -1,15 +1,32 @@
 <?php
 namespace CheckData;
-
 use StandardRequest\Request;
 
 class CheckChoice extends InterfaceCheckData
 {
 
-    public function __construct(Request $Request)
+    protected $legalChoice;
+
+    protected $techChoice;
+
+    public function __construct (Request $Request)
     {
-        if( isset($Request->FirstChoice) && isset($Request->SecondChoice) )
-        {
+        if (isset($Request->FirstChoice) && isset($Request->SecondChoice)) {
+            $this->techChoice = array(
+                    1,
+                    2,
+                    3
+            );
+            $this->legalChoice = array(
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+            );
             $this->column_value[] = $Request->FirstChoice;
             $this->column_value[] = $Request->SecondChoice;
         } else {
@@ -17,18 +34,30 @@ class CheckChoice extends InterfaceCheckData
         }
     }
 
-    public function startCheck()
+    public function startCheck ()
     {
-        if($this->column_value != NULL)
-        {
-            $first_choice = array( 1, 2, 3 );
-            $second_choice = array( 1, 2, 3, 4 );
-            if( in_array($this->column_value[0], $first_choice) && in_array($this->column_value[1], $second_choice) )
-            {
-                return $this->successor->startCheck();    
+        if ($this->column_value != NULL) {
+            if (in_array($this->column_value[0], $this->legalChoice) &&
+                     in_array($this->column_value[1], $this->legalChoice)) {
+                if ($this->avaliable()) {
+                    return $this->successor->startCheck();
+                }
             }
         }
         return FALSE;
+    }
+
+    protected function avaliable ()
+    {
+        if (in_array($this->column_value[1], $this->techChoice) &&
+                 in_array($this->column_value[0], $this->techChoice)) {
+            return FALSE;
+        } else {
+            if ($this->column_value[0] == $this->column_value[1]) {
+                return FALSE;
+            }
+        }
+        return TRUE;
     }
 }
 
