@@ -84,7 +84,7 @@ window.onload = function() {
 	}
 	
 	function isBirth(str) {
-		var reg = /^(19|20)\d{2} (1[0-2]|0?[1-9]) (0?[1-9]|[1-2][0-9]|3[0-1])$/;
+		var reg = /^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/;
 		return reg.exec(str);
 	}
 	
