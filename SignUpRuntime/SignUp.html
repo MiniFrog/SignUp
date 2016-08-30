@@ -89,13 +89,14 @@
 						<div class="col s12">
 						    <label>第一志愿</label>
 						    <select id='FirstChoice' name='FirstChoice'>
-						    	<optgroup label="管理型部门">
+							    <option value="" select>请选择第一志愿</option>
+						    	<optgroup label="管理型部门" class="first-govern">
 							      	<option value="1">秘书部</option>
 							      	<option value="2">组织部</option>
 							      	<option value="3">外联部</option>
 							      	<option value="4">宣传部</option>
 						    	</optgroup>
-						    	<optgroup  label="技术性部门">
+						    	<optgroup  label="技术性部门" class="first-tech">
 							      	<option value="5">技术部</option>
 							      	<option value="6">维修部</option>
 							      	<option value="7">信息部</option>
@@ -106,7 +107,8 @@
 						<div class="col s12">
 						    <label>第二志愿</label>
 						    <select id='SecondChoice' name='SecondChoice'>
-						    	<optgroup label="管理型部门">
+							    <option value="" select>请选择第二志愿</option>
+						    	<optgroup label="管理型部门" class="govern">
 							      	<option value="1">秘书部</option>
 							      	<option value="2">组织部</option>
 							      	<option value="3">外联部</option>
@@ -155,131 +157,6 @@
 				<input type='hidden' name='Handler' id='Handler' value='SignUp'>
 				
 				<a type='button' id='btn' class="waves-effect waves-light btn-large">提交报名</a>	
-
-				
-				<!--<div class="input-field form-name bg-blue1">
-					<input name="Name" id="Name" type="text" class="validate bg-blue1"/>
-					<label for="Name">姓名</label>
-				</div>
-				
-				<div class="form-sex bg-blue2">
-					<label for="Boy">男</label>
-					<input type='radio' name='Sex' id='Boy' class="Sex" value='1'>
-				</div>
-				<div class="form-sex bg-blue2">
-					<label for="Girl">女</label>
-					<input type='radio' name='Sex' id='Girl' class="Sex" value='0'>
-				</div>
-
-				<div class="form-birth bg-blue1">
-					<label for="Birthday">生日</label>
-					<input name='Birthday' type="date" id='Birthday'/>
-				</div>
-
-				<div class="form-class bg-blue2">
-					<label for="ClassNumber">班级</label>
-					<select name="ClassNumber" id="ClassNumber">
-					    <option value="1">信息工程 1 班</option>
-					    <option value="2">信息工程 2 班</option>
-					    <option value="3">信息工程 3 班</option>
-					    <option value="4">信息工程 4 班</option>
-					    <option value="5">信息工程 5 班</option>
-					    <option value="6">电科 1 班</option>
-					    <option value="7">冯秉权实验班</option>
-					    <option value="8">电科卓越班</option>
-				    </select>
-				</div>
-
-				<div class="form-room bg-blue1">
-					<label for="Dormitory">宿舍楼</label>
-					<input name='Dormitory' type="text" id='Dormitory' placeholder="C4" />
-				</div>
-
-				<div class="form-room bg-blue1">
-					<label for="Room">房号</label>
-					<input name='Room' type="text" id='Room' placeholder="436" />
-				</div>
-
-				<div class="form-num bg-blue2">
-					<label for="PhoneNumber">电话</label>
-					<input name="PhoneNumber" id="PhoneNumber" type="text" placeholder="13265958585"/>
-				</div>
-
-				<div class="form-short bg-blue1">
-					<label for="ShortPhoneNumber">短号</label>
-					<input name="ShortPhoneNumber" id="ShortPhoneNumber" type="text" placeholder="可不填"/>
-				</div>
-
-				<div class="form-qq bg-blue2">
-					<label for="QQNumber">qq号</label>
-					<input name="QQNumber" id="QQNumber" type="text" class="validate" placeholder="2979718315"/>
-				</div>
-				
-				<div class="form-first bg-blue1">
-				    <label>第一志愿</label>
-				    <select id='FirstChoice' name='FirstChoice'>
-				    	<optgroup label="管理型部门">
-					      	<option value="1">秘书部</option>
-					      	<option value="2">组织部</option>
-					      	<option value="3">外联部</option>
-					      	<option value="4">宣传部</option>
-				    	</optgroup>
-				    	<optgroup  label="技术性部门">
-					      	<option value="5">技术部</option>
-					      	<option value="6">维修部</option>
-					      	<option value="7">信息部</option>
-				    	</optgroup>
-				    </select>
-				</div>
-				
-				<div class="form-second bg-blue2">
-				    <label>第二志愿</label>
-				    <select id='SecondChoice' name='SecondChoice'>
-				    	<optgroup label="管理型部门">
-					      	<option value="1">秘书部</option>
-					      	<option value="2">组织部</option>
-					      	<option value="3">外联部</option>
-					      	<option value="4">宣传部</option>
-				    	</optgroup>
-				    	<optgroup  label="技术性部门" class="tech">
-					      	<option value="5">技术部</option>
-					      	<option value="6">维修部</option>
-					      	<option value="7">信息部</option>
-				    	</optgroup>
-				    </select>
-				</div>
-				
-				<div class="form-swap bg-blue1">
-					<label for="AceptNo">接受调剂</label>
-					<input type='radio' id="AceptNo" class='AceptSwap' name='AceptSwap' value='0'>
-				</div>
-				<div  class="form-swap bg-blue1">
-					<label for="AceptYes">不接受调剂</label>
-					<input type='radio' id="AceptYes" class='AceptSwap' name='AceptSwap' value='1'>
-				</div>
-				
-				<div class="form-text bg-blue2">
-					<label for="Interest">兴趣爱好</label>
-					<textarea type='text' id='Interest' name='Interest'></textarea>
-				</div>
-				
-				<div class="form-text bg-blue1">
-					<label for="SelfConception">个人认识</label>
-					<textarea type='text' id='SelfConception' name='SelfConception'></textarea>
-				</div>
-				
-				<div class="form-text bg-blue2">
-					<label for="SectorAwareness">部门认识</label>
-					<textarea type='text' id='SectorAwareness' name='SectorAwareness'></textarea>
-				</div>
-				
-				<div class="form-text bg-blue1">
-					<label for="Experience">相关经历</label>
-					<textarea type='text' id='Experience' name='Experience'></textarea>
-				</div>
-			<input type='hidden' name='Handler' id='Handler' value='SignUp'>
-			<div type='button' id='btn' class="inquiry-btn">提交报名</div>-->
-
 		</form>
 	</div>
 		

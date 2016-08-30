@@ -1,4 +1,4 @@
-﻿/*index.html*/
+/*index.html*/
 
 window.onload = function() {	
 	$("body").css("height", window.innerHeight + "px");
@@ -11,8 +11,8 @@ window.onload = function() {
 			$(".para1").show(500);
 		});
 	});
-	
-	$(".icon").click(function() {
+
+	$(".icon").mouseup(function() {
 		$(".para2").css("top", $(".icon").css("top"));
 		$(".para1").hide(500, function() {
 			$(".icon").animate({
@@ -65,29 +65,58 @@ window.onload = function() {
 	
   	$('.datepicker').pickadate({
    	 	selectMonths: true, // Creates a dropdown to control month
-    	selectYears: 30 // Creates a dropdown of 15 years to control year
+    	selectYears: 50 // Creates a dropdown of 15 years to control year
   	});
 
-	$("#FirstChoice").blur(function() {
-		if($(this).val()>4) {
-			$(".tech").hide();
-		}
-		else {
-			$(".tech").show();
-		}
-	});
+/*下拉表单*/
 
+	function dischoice(first, second, govern, tech) {
+		$(first).click(function() {
+			if($(first).val()>4) {
+				$(tech).attr("disabled", "disabled");
+				$(second).children(govern).children("option").each(function() {
+					$(this).removeAttr("disabled");
+				});
+			} else {
+				$(second).children(govern).children("option").each(function() {
+					$(this).removeAttr("disabled");
+					if($(this).index() == $(first).val() - 1) {
+						$(this).attr("disabled", "disabled");
+					}
+				});
+				$(tech).removeAttr("disabled");
+			}
+		});
+	}
+	
+	dischoice("#FirstChoice", "#SecondChoice", ".govern", ".tech" );
+	dischoice("#SecondChoice", "#FirstChoice", ".first-govern", ".first-tech" );
+	
+	
+//	$("#FirstChoice, #SecondChoice").click(function() {
+//		if($("#FirstChoice").val()>4) {
+//			$(".tech").attr("disabled", "disabled");
+//			
+//		} else {
+//			$("#SecondChoice").children(".govern").children("option").each(function() {
+//				$(this).removeAttr("disabled");
+//				if($(this).index() == $("#FirstChoice").val() - 1) {
+//					$(this).attr("disabled", "disabled");
+//				}
+//			});
+//			$(".tech").removeAttr("disabled");
+//		}
+//	});
+	
 	/*表单验证*/
+	function inputnull() {
+		
+	}
 	function isTel(str) {
 		var reg = /^1[3|4|5|7|8]\d{9}$/;
 		return reg.exec(str);
 	}
-	
-	function isBirth(str) {
-		var reg = /^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/;
-		return reg.exec(str);
-	}
-	
+
 	function isDorm(str) {
 		var reg = /(?i)c^[4|8]$|^12$/;
 		return reg.exec(str);
@@ -97,8 +126,8 @@ window.onload = function() {
 		var reg = /^[1-9]\d{4,9}$/;
 		return reg.exec(str);
 	}
-	
-	$("#btn").click(function() {
+	var clickcallback = $("#btn").click(function() {
+		
 		if(!$("#Name").val()) {
 			alert("请填写姓名！");
 			return false;
@@ -115,13 +144,11 @@ window.onload = function() {
 		
 		if(!isDorm($("#Dormitory").val())) {
 			alert("请填写正确的宿舍楼！");
-			
 			return false;
 		}
 		
 		if(!isQQ($("#QQNumber").val())) {
 			alert("请填写正确的QQ号！");
-			
 			return false;
 		}
 		

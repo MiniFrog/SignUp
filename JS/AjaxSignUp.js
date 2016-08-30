@@ -1,5 +1,5 @@
-﻿$(document).ready(function (){
-	$("#btn").click(function () {
+$(document).ready(function (){
+	if(clickcallback != false ) {
 		$.ajax({
 			url:"../index.php",
 			type:"post",
@@ -37,5 +37,5 @@
 				}
 			},
 		});
-	});
+	}
 });
