@@ -137,11 +137,6 @@ window.onload = function() {
 			return false;
 		}
 		
-		if(!isBirth($("#Birthday").val())) {
-			alert("请填写正确的生日！");
-			return false;
-		}
-		
 		if(!isDorm($("#Dormitory").val())) {
 			alert("请填写正确的宿舍楼！");
 			return false;
