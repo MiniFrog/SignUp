@@ -11,7 +11,7 @@ window.onload = function() {
 			$(".para1").show(500);
 		});
 	});
-	
+
 	$(".icon").mouseup(function() {
 		$(".para2").css("top", $(".icon").css("top"));
 		$(".para1").hide(500, function() {
@@ -112,12 +112,10 @@ window.onload = function() {
 	function inputnull() {
 		
 	}
-	
 	function isTel(str) {
 		var reg = /^1[3|4|5|7|8]\d{9}$/;
 		return reg.exec(str);
 	}
-	
 	function isDorm(str) {
 		var reg = /(?i)c^[4|8]$|^12$/;
 		return reg.exec(str);
@@ -127,7 +125,6 @@ window.onload = function() {
 		var reg = /^[1-9]\d{4,9}$/;
 		return reg.exec(str);
 	}
-	
 	var clickcallback = $("#btn").click(function() {
 		
 		if(!$("#Name").val()) {
@@ -146,13 +143,11 @@ window.onload = function() {
 		
 		if(!isDorm($("#Dormitory").val())) {
 			alert("请填写正确的宿舍楼！");
-			
 			return false;
 		}
 		
 		if(!isQQ($("#QQNumber").val())) {
 			alert("请填写正确的QQ号！");
-		
 			return false;
 		}
 		

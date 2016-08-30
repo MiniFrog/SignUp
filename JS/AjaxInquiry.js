@@ -1,4 +1,4 @@
-$(document).ready(function (){
+﻿$(document).ready(function (){
 	$("#btn").click(function () {
 		$.ajax({
 			url:"../index.php",
@@ -24,9 +24,6 @@ $(document).ready(function (){
 						alert(result[0].Name);
 						break;
 				}
-			},
-			error:function() {
-				alert("strange");
 			},
 		});
 	});
