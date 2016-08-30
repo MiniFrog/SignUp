@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>无线电爱好者协会招新报名</title>
+
+	<link rel="stylesheet" type="text/css" href="../CSS/common.css">
+</head>
+<body class="grayFC body-bg">
+	<div class="container">
+		<div class="up">
+			<img src="../img/icon.png" class="icon" />
+			<img src="../img/communicate.png" class="para1" />
+			<img src="../img/communicate1.png" class="para2" />
+			<p class="up-signup">
+				现在报名
+			</p>
+		</div>
+		
+		<hr class="line-grow"/>
+		
+		<div class="down">
+			<div class="down-double">
+				<div class="down-left">
+					<p class="down-inquiry">
+						报名查询
+					</p>
+				</div>
+				<div class="down-right">
+					<form class="form-field" method="post" action="index.php">
+					
+						<div class="down-name">
+							<label for="Name">姓名</label>
+							<input name="Name" id="Name" type="text" placeholder="姓名" />
+						</div>
+					
+						<div class="down-both">
+							<div class="half-width down-domitory">
+								<label for="Dormitory">楼号&nbsp;——&nbsp;</label>
+								<input name="Dormitory" id="Dormitory" type="text" placeholder="c3" />				
+							</div>
+							<div class="half-width down-room">
+								<label for="Room">宿舍号</label>
+								<input name="Room" id="Room" type="text" placeholder="403" />
+							</div>
+						</div>
+						
+						<input type='hidden' value='Inquiry' name='Handler' id='Handler'>
+					
+						<div id='btn' class="inquiry-btn">现在查询</div>
+					
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="confirm-IP">华南理工大学·<a class="site">无线电爱好者协会</a></div>
+		
+	</div>
+
+	<script src="../JS/jquery-3.1.0.js"></script>
+	<script src="../JS/common.js"></script>
+	<script src="../JS/AjaxInquiry.js"></script>
+</body>
+</html>

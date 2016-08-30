@@ -38,3 +38,4 @@ class Client
 }
 
 $Client = new Client();
+?>
