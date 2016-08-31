@@ -72,7 +72,7 @@ window.onload = function() {
 
 	function dischoice(first, second, govern, tech) {
 		$(first).click(function() {
-			if($(first).val()>4) {
+			if($(first).val()>5) {
 				$(tech).attr("disabled", "disabled");
 				$(second).children(govern).children("option").each(function() {
 					$(this).removeAttr("disabled");
@@ -92,64 +92,66 @@ window.onload = function() {
 	dischoice("#FirstChoice", "#SecondChoice", ".govern", ".tech" );
 	dischoice("#SecondChoice", "#FirstChoice", ".first-govern", ".first-tech" );
 	
-	
-//	$("#FirstChoice, #SecondChoice").click(function() {
-//		if($("#FirstChoice").val()>4) {
-//			$(".tech").attr("disabled", "disabled");
-//			
-//		} else {
-//			$("#SecondChoice").children(".govern").children("option").each(function() {
-//				$(this).removeAttr("disabled");
-//				if($(this).index() == $("#FirstChoice").val() - 1) {
-//					$(this).attr("disabled", "disabled");
-//				}
-//			});
-//			$(".tech").removeAttr("disabled");
-//		}
-//	});
-	
 	/*表单验证*/
-	function inputnull() {
-		
-	}
 	function isTel(str) {
 		var reg = /^1[3|4|5|7|8]\d{9}$/;
 		return reg.exec(str);
 	}
-	function isDorm(str) {
+	function isDorm(str, str2) {
 		var reg = /(?i)c^[4|8]$|^12$/;
-		return reg.exec(str);
+		var regx = /^\d{3}$/;
+		return reg.exec(str) && regx.exec(str2);
 	}
 	
 	function isQQ(str) {
 		var reg = /^[1-9]\d{4,9}$/;
 		return reg.exec(str);
 	}
-	var clickcallback = $("#btn").click(function() {
+	
+	function clickcallback() {
 		
 		if(!$("#Name").val()) {
-			alert("请填写姓名！");
+			alert("连名字都不填，报个毛线名啊！");
 			return false;
 		}
+		if(!$(".AceptSwap").val() || !$(".Sex").val() || !$("#FirstChoice").val() || !$("#SecondChoice").val() || !$("#")) {
+			alert("请重新审视你的选择！");
+
+			return false;
+		}
+		if(!$("#Interest").val() || !$("#SelfConception").val() || !$("#SectorAwareness").val() || !$("#Experience").val() ) {
+			alert("请认真填写各小段介绍啦！");
+
+			return false;
+		}
+		
 		if(!isTel($("#PhoneNumber").val())) {
-			alert("请填写正确的手机号！");
+			alert("手机都不填，人家怎么联系你啦！");
 			return false;
 		}
 		
 		if(!isBirth($("#Birthday").val())) {
-			alert("请填写正确的生日！");
+			alert("生日...告诉人家生日啦！");
 			return false;
 		}
 		
-		if(!isDorm($("#Dormitory").val())) {
-			alert("请填写正确的宿舍楼！");
+		if(!isDorm($("#Dormitory").val(), $("#Room").val())) {
+			alert("告诉人家正确的地址啦，不然怎么夜袭！");
 			return false;
 		}
 		
 		if(!isQQ($("#QQNumber").val())) {
-			alert("请填写正确的QQ号！");
+			alert("你的企鹅号！！！");
 			return false;
 		}
 		
+		return true;
+	}
+	
+	$("#btn").click(function() {
+		var callbackClick = clickcallback();
+		if(callbackClick) {
+			ajaxCheckOut();
+		}
 	});
 }
