@@ -1,5 +1,5 @@
 $(document).ready(function (){
-	if(clickcallback != false ) {
+	if(clickxhr != false ) {
 		$.ajax({
 			url:"../index.php",
 			type:"post",

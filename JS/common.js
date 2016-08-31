@@ -118,7 +118,7 @@ window.onload = function() {
 	}
 
 	function isDorm(str) {
-		var reg = /(?i)c^[4|8]$|^12$/;
+		var reg = /^[c|C][4|8]$|^[c|C]12$/;
 		return reg.exec(str);
 	}
 	
@@ -126,7 +126,9 @@ window.onload = function() {
 		var reg = /^[1-9]\d{4,9}$/;
 		return reg.exec(str);
 	}
-	var clickcallback = $("#btn").click(function() {
+	var clickxhr = function () {
+		
+		$("#btn").click(function() {
 		
 		if(!$("#Name").val()) {
 			alert("请填写姓名！");
@@ -148,4 +150,5 @@ window.onload = function() {
 		}
 		
 	});
+	};
 }
