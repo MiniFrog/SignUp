@@ -1,7 +1,7 @@
 ﻿$(document).ready(function (){
 	$("#btn").click(function () {
 		$.ajax({
-			url:"../index.php",
+			url:"index.php",
 			type:"post",
 			data:
 			{

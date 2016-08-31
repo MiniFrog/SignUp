@@ -1,7 +1,7 @@
 function ajaxCheckOut() {
 	$(document).ready(function (){
 				$.ajax({
-					url:"../index.php",
+					url:"index.php",
 					type:"post",
 					data:
 					{
