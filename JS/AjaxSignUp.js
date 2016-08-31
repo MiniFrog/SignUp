@@ -27,12 +27,16 @@ function ajaxCheckOut() {
 					success:function(data) {
 						switch(data) {
 							case "0"://ok
-								alert(data);
+								alert('报名成功！');
 								break;
 							case "1"://用户信息有误
+								alert('输入信息有误!');
+								break;
 							case "2"://数据库已经有相同的信息了
+								alert('请勿重复报名!');
+								break;
 							case "5": //服务器内部错误
-								alert(data);
+								alert('未知的系统错误，请稍候再试!');
 								break;
 						}
 					},

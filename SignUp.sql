@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-08-29 21:41:30
+-- Generation Time: 2016-09-01 00:50:21
 -- 服务器版本： 5.7.13-0ubuntu0.16.04.2
 -- PHP Version: 7.0.9-1+deb.sury.org~xenial+1
 
@@ -30,10 +30,10 @@ CREATE TABLE `member` (
   `Id` int(4) NOT NULL,
   `Sex` int(1) NOT NULL COMMENT '性别',
   `Name` char(4) NOT NULL COMMENT '姓名',
-  `Birthday` char(10) NOT NULL COMMENT '生日',
+  `Birthday` char(18) NOT NULL COMMENT '生日',
   `PhoneNumber` char(11) NOT NULL COMMENT '电话号码',
   `ShortPhoneNumber` char(6) NOT NULL COMMENT '短号',
-  `QQNumber` char(11) NOT NULL,
+  `QQNumber` char(11) NOT NULL COMMENT '企鹅号',
   `Dormitory` char(2) NOT NULL COMMENT '楼号',
   `Room` char(3) NOT NULL COMMENT '房间号',
   `ClassNumber` char(4) NOT NULL COMMENT '班级',

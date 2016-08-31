@@ -37,7 +37,7 @@ class HandlerSignUp extends InterfaceHandler
                 $PDO = \Database\StaticPdo::DBConnect();
                 $exist = \Database\DatabaseInfoExist::infoExist($PDO, 'member', 
                         array(
-                                'QQNumber' => $Request->QQNumber,
+                                'QQNumber' => $Request->QQNumber
                         ));
                 if (! $exist) {
                     $DBInsert = new \Database\DatabaseInsert('member');
@@ -81,23 +81,24 @@ class HandlerSignUp extends InterfaceHandler
                                     $Request->Experience
                             ));
                     if ($result) {
-                        setcookie(md5($Request->Name), md5($Request->Dormitory.$Request->Room), 
+                        setcookie(md5($Request->Name), 
+                                md5($Request->Dormitory . $Request->Room), 
                                 time() + 60 * 60 * 24 * 7);
                         echo json_encode(0);
                         exit();
                     } else {
-                        //server error
+                        // server error
                         error_log('Database insert info error.');
                         echo json_encode(5);
                         exit();
                     }
                 } else {
-                    //the info has already existed.
+                    // the info has already existed.
                     echo json_encode(2);
                     exit();
                 }
             } else {
-                //input data format error
+                // input data format error
                 echo json_encode(1);
                 exit();
             }

@@ -7,9 +7,9 @@ abstract class InterfaceStaticPdo
     
     const DB_NAME = 'SignUp';
     
-    const DB_USER = 'root';
+    const DB_USER = 'SignUp';
     
-    const DB_PWD = 'scutwuxie';
+    const DB_PWD = 'al3682733';
     
     protected static $PDO;
     
