@@ -97,7 +97,9 @@ window.onload = function() {
 		var reg = /^1[3|4|5|7|8]\d{9}$/;
 		return reg.exec(str);
 	}
+
 	function isDorm(str, str2) {
+
 		var reg = /(?i)c^[4|8]$|^12$/;
 		var regx = /^\d{3}$/;
 		return reg.exec(str) && regx.exec(str2);
@@ -130,6 +132,7 @@ window.onload = function() {
 			return false;
 		}
 		
+
 		if(!isBirth($("#Birthday").val())) {
 			alert("生日...告诉人家生日啦！");
 			return false;
@@ -137,6 +140,7 @@ window.onload = function() {
 		
 		if(!isDorm($("#Dormitory").val(), $("#Room").val())) {
 			alert("告诉人家正确的地址啦，不然怎么夜袭！");
+
 			return false;
 		}
 		
