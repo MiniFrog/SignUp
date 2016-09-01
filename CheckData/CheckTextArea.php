@@ -11,14 +11,10 @@ class CheckTextArea extends InterfaceCheckData
                  isset($Request->SelfConception) &&
                  isset($Request->SectorAwareness) && isset($Request->Experience);
         if ($this->column_value) {
-            $this->column_value = strlen($Request->Interest) &&
-                     strlen($Request->SelfConception) &&
-                     strlen($Request->SectorAwareness) &&
-                     strlen($Request->Experience) &&
-                     (mb_strlen($Request->Interest) < 129) &&
-                     (mb_strlen($Request->SelfConception) < 129) &&
-                     (mb_strlen($Request->SectorAwareness) < 129) &&
-                     (mb_strlen($Request->Experience) < 129);
+            $this->column_value = (strlen($Request->Interest) < 201) &&
+                     (strlen($Request->SelfConception) < 201) &&
+                     (strlen($Request->SectorAwareness) < 201) &&
+                     (strlen($Request->Experience) < 201);
         }
     }
 

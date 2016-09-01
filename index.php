@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Shanghai');
 function autoLoad ($class_name)
 {
     $file_path = str_replace('\\', '/', $class_name) . '.php';

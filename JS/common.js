@@ -99,7 +99,7 @@ window.onload = function() {
 	}
 
 	function isDorm(str) {
-		var reg = /^[c|C][4|8]$|^[c|C]12$/;
+		var reg = /^[c|C][4|7]$|^[c|C]12$/;
 		return reg.exec(str);
 	}
 	
@@ -116,11 +116,6 @@ window.onload = function() {
 		}
 		if(!$(".AceptSwap").val() || !$(".Sex").val() || !$("#FirstChoice").val() || !$("#SecondChoice").val() || !$("#ClassNumber")) {
 			alert("请重新审视你的选择！");
-
-			return false;
-		}
-		if(!$("#Interest").val() || !$("#SelfConception").val() || !$("#SectorAwareness").val() || !$("#Experience").val() ) {
-			alert("请认真填写各小段介绍啦！");
 
 			return false;
 		}

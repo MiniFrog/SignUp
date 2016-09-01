@@ -4,7 +4,7 @@ namespace Database;
 class DatabaseInfoExist
 {
 
-    public static function infoExist (\PDO $PDO, String $table_name, 
+    public static function infoExist (\PDO $PDO, $table_name, 
             Array $where_value)
     {
         $sql = "SELECT 1";

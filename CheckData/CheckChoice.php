@@ -13,9 +13,9 @@ class CheckChoice extends InterfaceCheckData
     {
         if (isset($Request->FirstChoice) && isset($Request->SecondChoice)) {
             $this->techChoice = array(
-                    1,
-                    2,
-                    3
+                    6,
+                    7,
+                    8
             );
             $this->legalChoice = array(
                     1,

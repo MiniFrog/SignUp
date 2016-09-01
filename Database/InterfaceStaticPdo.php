@@ -13,7 +13,6 @@ abstract class InterfaceStaticPdo
     
     protected static $PDO;
     
-    abstract public static function DBConnect();
     //返回到 PDO 的一个实例
 }
 

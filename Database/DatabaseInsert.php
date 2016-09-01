@@ -6,7 +6,7 @@ class DatabaseInsert
 
     protected $sql;
 
-    public function __construct (String $table_name)
+    public function __construct ($table_name)
     {
         $value = NULL;
         $this->sql = "INSERT INTO $table_name ";
