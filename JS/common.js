@@ -1,6 +1,6 @@
 /*index.html*/
 
-window.onload = function() {	
+window.onload = function() {
 	$("body").css("height", window.innerHeight + "px");
 	$(".icon").show(1000).animate({
 		"top": "250px",
@@ -12,12 +12,13 @@ window.onload = function() {
 		});
 	});
 
-	$(".icon").mouseup(function() {
+
+	function iconAnime() {
 		$(".para2").css("top", $(".icon").css("top"));
 		$(".para1").hide(500, function() {
 			$(".icon").animate({
 				"left": "20%",
-			},function () {
+			}, function () {
 				$(".para2").show(500).delay(1000).hide(500, function() {
 					$(".icon").animate({
 						"left": "40%",
@@ -25,6 +26,11 @@ window.onload = function() {
 				});
 			});
 		});
+		return 0;
+	}
+
+	$(".icon").mouseup(function() {
+		while(iconAnime());
 	});
 	
 	$(".up-signup").click(function() {
@@ -71,7 +77,7 @@ window.onload = function() {
 /*下拉表单*/
 
 	function dischoice(first, second, govern, tech) {
-		$(first).click(function() {
+		$(first).blur(function() {
 			if($(first).val()>5) {
 				$(tech).attr("disabled", "disabled");
 				$(second).children(govern).children("option").each(function() {
@@ -108,37 +114,38 @@ window.onload = function() {
 		return reg.exec(str);
 	}
 	
+
 	function clickcallback() {
 		
 		if(!$("#Name").val()) {
-			alert("连名字都不填，报个毛线名啊！");
+			Materialize.toast('请填上你的姓名！', 3000);
 			return false;
 		}
 		if(!$(".AceptSwap").val() || !$(".Sex").val() || !$("#FirstChoice").val() || !$("#SecondChoice").val() || !$("#ClassNumber")) {
-			alert("请重新审视你的选择！");
+			Materialize.toast("请检查是否有漏选选项！", 3000);
 
 			return false;
 		}
 		
 		if(!isTel($("#PhoneNumber").val())) {
-			alert("手机都不填，人家怎么联系你啦！");
+			Materialize.toast("请填写正确的手机，以便通知面试结果！", 3000);
 			return false;
 		}
 		
 
 		if(!$("#Birthday").val()) {
-			alert("生日...告诉人家生日啦！");
+			Materialize.toast("请选择你的生日", 3000);
 			return false;
 		}
 		
 		if(!isDorm($("#Dormitory").val(), $("#Room").val())) {
-			alert("告诉人家正确的地址啦，不然怎么夜袭！");
+			Materialize.toast("请填写正确的宿舍号", 3000);
 
 			return false;
 		}
 		
 		if(!isQQ($("#QQNumber").val())) {
-			alert("你的企鹅号！！！");
+			Materialize.toast("你的企鹅号！！！", 3000);
 			return false;
 		}
 		
