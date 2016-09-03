@@ -1,0 +1,39 @@
+/*------------------SignUp.css---------------------*/
+body,
+p {
+	margin: 0;
+	background-color: #fcfcfc;
+	font-family: "微软雅黑", "microsoft yahei";
+}
+
+header {
+	width: 100%;
+	height: auto;
+}
+.pic-header {
+	width: 100%;
+	height: auto;
+}
+.icons {
+	width: 25%;
+	height: auto;
+	
+	position: absolute;
+	top: 35px;
+	left: 59%;
+
+	-webkit-transition: -webkit-transform 0.4s ease-out; 
+    -moz-transition: -moz-transform 0.4s ease-out; 
+    transition: transform 0.4s ease-out; 
+}
+.icons:active {
+	-webkit-transform: rotate(360deg); 
+    -moz-transform: rotate(360deg); 
+    transform: rotate(360deg);
+}
+#btn {
+	width: 50%;
+	margin-left: 25%;
+	
+	margin-bottom: 50px;
+}

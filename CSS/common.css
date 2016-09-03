@@ -1,0 +1,187 @@
+body,
+p {
+	margin: 0;
+	background-color: #fcfcfc;
+	font-family: "微软雅黑", "microsoft yahei";
+}
+.body-bg {
+	background-image: url(../img/circuit.jpg);
+	background-size: cover;
+}
+.container {
+	width: 100%;
+	height: auto;
+}
+.up {
+	height: 146px;
+	width: 100%;
+	padding-top: 104px;
+	
+	text-align: center;
+}
+.icon {
+	width: 20%;
+	height: auto;
+	
+	display: none;
+	position: absolute;
+	top: 200px;
+	left: 40%;
+	
+	-webkit-transition: -webkit-transform 0.4s ease-out; 
+    -moz-transition: -moz-transform 0.4s ease-out; 
+    transition: transform 0.4s ease-out; 
+}
+.icon:active {
+	-webkit-transform: rotate(360deg); 
+    -moz-transform: rotate(360deg); 
+    transform: rotate(360deg);
+}
+.para1,
+.para2 {
+	position: absolute;
+	top: 255px;
+	left: 40%;
+	
+	width: 40%;
+	height: auto;
+	
+	display: none;
+}
+.up-signup {
+	margin-top: 0;
+	font-size: 42px;
+	font-weight: lighter;
+	
+	background-image: -webkit-linear-gradient(90deg, #0000ff, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 20px #00ffff;
+}
+.line-grow {
+	margin: 0;
+	border: none;
+	width: 0;
+	height: 1px;
+    background-color: #c0c8c9;
+    background-image: -webkit-linear-gradient(0deg, #000, #fff, #000);
+}
+
+.down {
+	height: 250px;
+	width: 100%;
+	
+	overflow: hidden;
+}
+.down-double {
+	margin-left: 0;
+	width: 200%;
+	height: 250px;
+}
+.down-left {
+	height: 250px;
+	width: 50%;
+	
+	text-align: center;
+	float: left;
+}
+.down-inquiry {
+	font-size: 42px;
+	font-weight: lighter;
+	
+	position: relative;
+	top: 104px;
+	background-image: -webkit-linear-gradient(90deg, #0000ff, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 20px #00ffff;
+}
+.down-right {
+	margin-top: 30px;
+	height: 200px;
+	width: 50%;
+	
+	background-color: #ffffff;
+	float: left;
+	opacity: 0.8;
+}
+
+input {
+	width: 40%;
+	background-color: #ffffff;
+	
+	outline: none;
+	border-width: 0 0 1px 0;
+	border-color: #999999;
+	transition: border-color 1s, width 1s, color 1s;
+	-webkit-transition: border-color 1s, width 1s, color 1s;
+}
+input:focus {
+	border-color: #0090FF;
+	width: 60%;
+	
+	color: #0090FF;
+}
+.input-valued {
+	border-color: #0090FF !important;
+	width: 60% !important;
+	
+	color: #0090FF !important;
+}
+label {
+	display: block;
+}
+.label-color {
+	background-image: -webkit-linear-gradient(90deg, #00b0ff, #0099ff, #0055ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.down-name {
+	padding-top: 10px;
+	height: 60px;
+	
+	text-align: center;
+}
+.down-both {
+	height: 60px;
+}
+.down-domitory {
+	text-align: right;
+}
+.half-width {
+	width: 50%;
+	
+	float: left;
+}
+.inquiry-btn {
+	margin-left: 20%;
+	height: 40px;
+	line-height: 40px;
+	
+	text-align: center;
+	color: #00b0ff;
+	width:60%;
+	border: 1px solid #0090ff;
+	border-radius: 5px;
+}
+
+.confirm-IP {
+	width: 100%;
+	margin-top: 0px;
+
+	color: #0000aa;
+	text-align: center;
+}
+.site {
+	text-decoration: underline;
+}
+.site:active {
+	color: #00ccff;
+}
+
+
+.redAlert {
+	color: red!important;
+}
