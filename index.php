@@ -38,8 +38,4 @@ class Client
 }
 
 $Client = new Client();
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 7ade90ce3681a16baa5c29c921953a3b2b5985e6
