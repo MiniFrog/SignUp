@@ -16,7 +16,6 @@ class StaticPdo extends InterfaceStaticPdo
             return static::$PDO;
         } catch (\PDOException $e) {
             error_log($e->getMessage());
-            echo json_encode($e->getMessage());
             echo json_encode(6);
             exit();
         }
